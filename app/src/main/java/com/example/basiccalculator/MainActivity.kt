@@ -34,7 +34,14 @@ class MainActivity : AppCompatActivity() {
                 binding.tvResult.text = ""
             }
             R.id.btnResolve -> {
-                tryResolve(binding.tvOperation.text.toString())
+                tryResolve(binding.tvOperation.text.toString(), true)
+            }
+            R.id.btnTimes,
+            R.id.btnPlus,
+            R.id.btnRes,
+            R.id.btnDivide -> {
+                tryResolve(binding.tvOperation.text.toString(), false)
+                binding.tvOperation.append(valueStr)
             }
             else -> {
                 binding.tvOperation.append(valueStr)
@@ -42,29 +49,67 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun tryResolve(operationRef: String) {
-        val operator = getOperator(operationRef)
+    private fun tryResolve(operationRef: String, isFromResolve: Boolean) {
+
+        if (operationRef.isEmpty()) return
+
+        var operation = operationRef
+
+        if (operation.contains(POINT) && operation.lastIndexOf(POINT) == operation.length - 1) {
+            operation = operation.substring(0, operation.length - 1)
+        }
+
+        val operator = getOperator(operation)
 
         var values = arrayOfNulls<String>(0)
+        if (operator != OPERATOR_NULL) {
+            if (operator == OPERATOR_SUB) {
+                val index = operation.lastIndexOf(OPERATOR_SUB)
+                if (index < operation.length-1) {
+                    values = arrayOfNulls(2)
+                    values[0] = operation.substring(0, index)
+                    values[1] = operation.substring(index + 1)
+                } else {
+                    values = arrayOfNulls(1)
+                    values[0] = operation.substring(0, index)
+                }
+            } else {
+                values = operation.split(operator).toTypedArray()
+            }
+        }
 
-        values = operationRef.split(operator).toTypedArray()
+        if (values.size > 1) {
+            try {
+                val numberOne = values[0]!!.toDouble()
+                val numberTwo = values[1]!!.toDouble()
 
-        val numberOne = values[0]!!.toDouble()
-        val numberTwo = values[1]!!.toDouble()
+                binding.tvResult.text = getResult(numberOne, operator, numberTwo).toString()
 
-        binding.tvResult.text = getResult(numberOne, operator, numberTwo).toString()
+                if (binding.tvResult.text.isNotEmpty() && !isFromResolve) {
+                    binding.tvOperation.text = binding.tvResult.text
+                }
+            } catch (e: NumberFormatException) {
+                if (isFromResolve) showMessage()
+            }
+        } else {
+            if (isFromResolve && operator != OPERATOR_NULL) showMessage()
+        }
     }
 
     private fun getOperator(operation: String): String {
         var operator = ""
 
-        if (operation.contains(OPERATOR_MULTI)) {
-            operator = OPERATOR_MULTI
+        operator = if (operation.contains(OPERATOR_MULTI)) {
+            OPERATOR_MULTI
         } else if (operation.contains(OPERATOR_DIV)) {
-            operator = OPERATOR_DIV
+            OPERATOR_DIV
         } else if (operation.contains(OPERATOR_SUM)) {
-            operator = OPERATOR_SUM
-        } else if (operation.contains(OPERATOR_SUB)) {
+            OPERATOR_SUM
+        } else {
+            OPERATOR_NULL
+        }
+
+        if (operator == OPERATOR_NULL && operation.lastIndexOf(OPERATOR_SUB) > 0) {
             operator = OPERATOR_SUB
         }
 
@@ -82,6 +127,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         return result
+    }
+
+    private fun showMessage() {
+        Snackbar.make(binding.root, getString(R.string.message_exp_incorrect),
+            Snackbar.LENGTH_SHORT).setAnchorView(binding.llTop).show()
     }
 
     companion object {
