@@ -41,10 +41,29 @@ class MainActivity : AppCompatActivity() {
             R.id.btnRes,
             R.id.btnDivide -> {
                 tryResolve(binding.tvOperation.text.toString(), false)
-                binding.tvOperation.append(valueStr)
+
+                val operator = valueStr
+                val operation = binding.tvOperation.text.toString()
+                addOperator(operator, operation)
+            //binding.tvOperation.append(valueStr)
             }
             else -> {
                 binding.tvOperation.append(valueStr)
+            }
+        }
+    }
+
+    private fun addOperator(operator: String, operation: String) {
+        val lastElement = if (operation.isEmpty()) ""
+        else operation.substring(operation.length - 1)
+
+        if (operator == OPERATOR_SUB) {
+            if (operation.isEmpty() || lastElement != OPERATOR_SUB && lastElement != POINT) {
+                binding.tvOperation.append(operator)
+            }
+        } else {
+            if (!operation.isEmpty() && lastElement != POINT) {
+                binding.tvOperation.append(operator)
             }
         }
     }
