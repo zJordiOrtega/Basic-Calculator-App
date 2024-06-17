@@ -54,7 +54,8 @@
             android:text="@string/calc_btn_point"
             android:textSize="@dimen/calc_btn_text_size"
             android:layout_marginStart="@dimen/common_padding_min"
-            android:backgroundTint="@color/gray_700"/>
+            android:backgroundTint="@color/gray_700"
+            android:onClick="onClickButton"/>
         <Button
             android:id="@+id/btnZero"
             android:layout_width="0dp"
@@ -63,7 +64,8 @@
             android:text="@string/calc_btn_zero"
             android:textSize="@dimen/calc_btn_text_size"
             android:layout_marginStart="@dimen/common_padding_min"
-            android:backgroundTint="@color/gray_700"/>
+            android:backgroundTint="@color/gray_700"
+            android:onClick="onClickButton"/>
         <Button
             android:id="@+id/btnResolve"
             android:layout_width="0dp"
@@ -72,7 +74,8 @@
             android:text="@string/calc_btn_resolve"
             android:textSize="@dimen/calc_btn_text_size"
             android:layout_marginStart="@dimen/common_padding_min"
-            android:backgroundTint="@color/blue_700"/>
+            android:backgroundTint="@color/blue_700"
+            android:onClick="onClickButton"/>
     </LinearLayout>
 
     <LinearLayout
@@ -93,7 +96,8 @@
             android:text="@string/calc_btn_one"
             android:textSize="@dimen/calc_btn_text_size"
             android:layout_marginStart="@dimen/common_padding_min"
-            android:backgroundTint="@color/gray_700"/>
+            android:backgroundTint="@color/gray_700"
+            android:onClick="onClickButton"/>
         <Button
             android:id="@+id/btnTwo"
             android:layout_width="0dp"
@@ -102,7 +106,8 @@
             android:text="@string/calc_btn_two"
             android:textSize="@dimen/calc_btn_text_size"
             android:layout_marginStart="@dimen/common_padding_min"
-            android:backgroundTint="@color/gray_700"/>
+            android:backgroundTint="@color/gray_700"
+            android:onClick="onClickButton"/>
         <Button
             android:id="@+id/btnThree"
             android:layout_width="0dp"
@@ -111,7 +116,8 @@
             android:text="@string/calc_btn_three"
             android:textSize="@dimen/calc_btn_text_size"
             android:layout_marginStart="@dimen/common_padding_min"
-            android:backgroundTint="@color/gray_700"/>
+            android:backgroundTint="@color/gray_700"
+            android:onClick="onClickButton"/>
         <Button
             android:id="@+id/btnPlus"
             android:layout_width="0dp"
@@ -121,7 +127,8 @@
             android:textColor="@color/blue_700"
             android:textSize="@dimen/calc_btn_text_size"
             android:layout_marginStart="@dimen/common_padding_min"
-            android:backgroundTint="@color/gray_700"/>
+            android:backgroundTint="@color/gray_700"
+            android:onClick="onClickButton"/>
     </LinearLayout>
 
     <LinearLayout
@@ -142,7 +149,8 @@
             android:text="@string/calc_btn_four"
             android:textSize="@dimen/calc_btn_text_size"
             android:layout_marginStart="@dimen/common_padding_min"
-            android:backgroundTint="@color/gray_700"/>
+            android:backgroundTint="@color/gray_700"
+            android:onClick="onClickButton"/>
         <Button
             android:id="@+id/btnFive"
             android:layout_width="0dp"
@@ -151,7 +159,8 @@
             android:text="@string/calc_btn_five"
             android:textSize="@dimen/calc_btn_text_size"
             android:layout_marginStart="@dimen/common_padding_min"
-            android:backgroundTint="@color/gray_700"/>
+            android:backgroundTint="@color/gray_700"
+            android:onClick="onClickButton"/>
         <Button
             android:id="@+id/btnSix"
             android:layout_width="0dp"
@@ -160,7 +169,8 @@
             android:text="@string/calc_btn_six"
             android:textSize="@dimen/calc_btn_text_size"
             android:layout_marginStart="@dimen/common_padding_min"
-            android:backgroundTint="@color/gray_700"/>
+            android:backgroundTint="@color/gray_700"
+            android:onClick="onClickButton"/>
         <Button
             android:id="@+id/btnRes"
             android:layout_width="0dp"
@@ -170,7 +180,8 @@
             android:textColor="@color/blue_700"
             android:textSize="@dimen/calc_btn_text_size"
             android:layout_marginStart="@dimen/common_padding_min"
-            android:backgroundTint="@color/gray_700"/>
+            android:backgroundTint="@color/gray_700"
+            android:onClick="onClickButton"/>
     </LinearLayout>
 
     <LinearLayout
@@ -191,7 +202,8 @@
             android:text="@string/calc_btn_seven"
             android:textSize="@dimen/calc_btn_text_size"
             android:layout_marginStart="@dimen/common_padding_min"
-            android:backgroundTint="@color/gray_700"/>
+            android:backgroundTint="@color/gray_700"
+            android:onClick="onClickButton"/>
         <Button
             android:id="@+id/btnEight"
             android:layout_width="0dp"
@@ -200,7 +212,8 @@
             android:text="@string/calc_btn_eight"
             android:textSize="@dimen/calc_btn_text_size"
             android:layout_marginStart="@dimen/common_padding_min"
-            android:backgroundTint="@color/gray_700"/>
+            android:backgroundTint="@color/gray_700"
+            android:onClick="onClickButton"/>
         <Button
             android:id="@+id/btnNine"
             android:layout_width="0dp"
@@ -209,7 +222,8 @@
             android:text="@string/calc_btn_nine"
             android:textSize="@dimen/calc_btn_text_size"
             android:layout_marginStart="@dimen/common_padding_min"
-            android:backgroundTint="@color/gray_700"/>
+            android:backgroundTint="@color/gray_700"
+            android:onClick="onClickButton"/>
         <Button
             android:id="@+id/btnTimes"
             android:layout_width="0dp"
@@ -220,7 +234,8 @@
             android:textSize="@dimen/calc_btn_text_size"
             android:layout_marginStart="@dimen/common_padding_min"
             android:backgroundTint="@color/gray_700"
-            android:textAllCaps="false"/>
+            android:textAllCaps="false"
+            android:onClick="onClickButton"/>
     </LinearLayout>
 
     <LinearLayout
@@ -241,7 +256,8 @@
             android:text="@string/calc_btn_clear"
             android:textSize="@dimen/calc_btn_text_size"
             android:layout_marginStart="@dimen/common_padding_min"
-            android:backgroundTint="@color/deepOrange_900"/>
+            android:backgroundTint="@color/deepOrange_900"
+            android:onClick="onClickButton"/>
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnDelete"
             android:layout_width="0dp"
@@ -253,7 +269,8 @@
             android:backgroundTint="@color/gray_700"
             app:icon="@drawable/ic_back"
             app:iconGravity="textStart"
-            app:iconPadding="@dimen/common_padding_none"/>
+            app:iconPadding="@dimen/common_padding_none"
+            android:onClick="onClickButton"/>
         <Button
             android:id="@+id/btnDivide"
             android:layout_width="0dp"
@@ -263,7 +280,8 @@
             android:textSize="@dimen/calc_btn_text_size"
             android:layout_marginStart="@dimen/common_padding_min"
             android:backgroundTint="@color/gray_700"
-            android:textColor="@color/blue_700"/>
+            android:textColor="@color/blue_700"
+            android:onClick="onClickButton"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
