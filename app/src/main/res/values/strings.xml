@@ -21,5 +21,6 @@
     <string name="calc_btn_clear">clear</string>
     <string name="calc_btn_delete"><![CDATA[<]]></string>
     <string name="message_exp_incorrect">The expression it\'s incorrect.</string>
+    <string name="verificate_your_numbers">Verificate your numbers</string>
 
 </resources>
