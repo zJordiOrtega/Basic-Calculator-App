@@ -3,9 +3,8 @@ package com.example.basiccalculator
 class Operations {
     companion object {
         fun getOperator(operation: String): String {
-            var operator = ""
 
-            operator = if (operation.contains(Constants.OPERATOR_MULTI)) {
+            var operator = if (operation.contains(Constants.OPERATOR_MULTI)) {
                 Constants.OPERATOR_MULTI
             } else if (operation.contains(Constants.OPERATOR_DIV)) {
                 Constants.OPERATOR_DIV
@@ -47,23 +46,7 @@ class Operations {
             }
 
             val operator = Operations.getOperator(operation)
-
-            var values = arrayOfNulls<String>(0)
-            if (operator != Constants.OPERATOR_NULL) {
-                if (operator == Constants.OPERATOR_SUB) {
-                    val index = operation.lastIndexOf(Constants.OPERATOR_SUB)
-                    if (index < operation.length-1) {
-                        values = arrayOfNulls(2)
-                        values[0] = operation.substring(0, index)
-                        values[1] = operation.substring(index + 1)
-                    } else {
-                        values = arrayOfNulls(1)
-                        values[0] = operation.substring(0, index)
-                    }
-                } else {
-                    values = operation.split(operator).toTypedArray()
-                }
-            }
+            val values = divideOperation(operator, operation)
 
             if (values.size > 1) {
                 try {
@@ -81,17 +64,33 @@ class Operations {
             }
         }
 
-        fun getResult(numberOne: Double, operator: String, numberTwo: Double): Double {
-            var result = 0.0
-
-            when (operator) {
-                Constants.OPERATOR_MULTI -> result = numberOne * numberTwo
-                Constants.OPERATOR_DIV -> result = numberOne / numberTwo
-                Constants.OPERATOR_SUM -> result = numberOne + numberTwo
-                Constants.OPERATOR_SUB -> result = numberOne - numberTwo
+        fun divideOperation(operator: String, operation: String): Array<String?> {
+            var values = arrayOfNulls<String>(0)
+            if (operator != Constants.OPERATOR_NULL) {
+                if (operator == Constants.OPERATOR_SUB) {
+                    val index = operation.lastIndexOf(Constants.OPERATOR_SUB)
+                    if (index < operation.length-1) {
+                        values = arrayOfNulls(2)
+                        values[0] = operation.substring(0, index)
+                        values[1] = operation.substring(index + 1)
+                    } else {
+                        values = arrayOfNulls(1)
+                        values[0] = operation.substring(0, index)
+                    }
+                } else {
+                    values = operation.split(operator).dropLastWhile{ it == "" }.toTypedArray()
+                }
             }
+            return values
+        }
 
-            return result
+        fun getResult(numberOne: Double, operator: String, numberTwo: Double): Double {
+            return when (operator) {
+                Constants.OPERATOR_MULTI -> numberOne * numberTwo
+                Constants.OPERATOR_DIV -> numberOne / numberTwo
+                Constants.OPERATOR_SUM -> numberOne + numberTwo
+                else -> numberOne - numberTwo
+            }
         }
     }
 }
